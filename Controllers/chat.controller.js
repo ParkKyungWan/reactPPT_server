@@ -17,7 +17,8 @@ chatController.saveChat = async(message, user)=>{
 
 chatController.getRecentChat = async()=>{
     try{
-        recentChats = await Chat.find().sort({ createdAt: -1 }).limit(30);
+        recentChats = await Chat.find().sort({ _id: -1 }).limit(30);
+        recentChats.reverse();
     }catch (error) {
         console.error("Error fetching chats:", error);
         throw error;
